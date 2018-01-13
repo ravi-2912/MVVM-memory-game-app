@@ -27,8 +27,37 @@ function init() {
         const target =  evt.target;
         if(target.nodeName == 'LI') {
             target.classList.add('open', 'show');
+Model = {
+    getData: function() {
+        // data for font-awesome
+        const gameIconList = ['diamond', 'anchor', 'bolt', 'paper-plane-o', 'cube', 'leaf', 'bicycle', 'bomb'];
+        return gameIconList;
+    },
+    init: function() {
+        this.data = this.getData();
+        this.model = [];
+        this.dataArray = this.shuffle([...this.data, ...this.data]);
+        for(let i = 0 ; i < this.dataArray.length; i++) {
+            this.model.push({
+                icon: 'fa-' + this.dataArray[i],
+                id: i,
+                clicked: false
+            });
         }
-    });
+    },
+    // Shuffle function from http://stackoverflow.com/a/2450976
+    shuffle: function (array) {
+        var currentIndex = array.length, temporaryValue, randomIndex;
+        while (currentIndex !== 0) {
+            randomIndex = Math.floor(Math.random() * currentIndex);
+            currentIndex -= 1;
+            temporaryValue = array[currentIndex];
+            array[currentIndex] = array[randomIndex];
+            array[randomIndex] = temporaryValue;
+        }
+        return array;
+    }
+};
 
 }
 
