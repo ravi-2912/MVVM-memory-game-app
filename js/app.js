@@ -89,9 +89,42 @@ View = {
     },
 };
 
+ViewModel = {
+    init: function() {
+        this.openCards = [];
+        Model.init();
+        View.init();
+    },
+    getModel: function() {
+        return Model.model;
+    },
+    getCard: function(id) {
+        var md = Model.model;
+        return md.find(function(el) {
+            return el.id == id;
+        });
+    },
+    getCardIcon: function(card) {
+        return card.icon;
+    },
+    getCardID: function(card) {
+        return card.id;
+    },
+    getCardClicked: function(card) {
+        return card.clicked;
+    },
+    cardClicked: function(card) {
+        if(!card.clicked){
+            card.clicked = true;
+        }
+    },
+    checkCardMatch: function(card) {
+        return this.openCards.find(function(el){
+            return el.icon === card.icon;
+        });
     }
-    return array;
-}
+
+};
 
 
 /*
