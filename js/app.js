@@ -33,18 +33,62 @@ Model = {
     }
 };
 
-}
+View = {
+    init: function() {
+        this.totalClicks = 0;
+        this.deck = document.querySelector('ul.deck');
+        this.renderInit();
+        this.cards = Array.prototype.slice.call(document.querySelectorAll('li.card'))
+        this.restartBtn = document.querySelector('div.restart');
 
-// Shuffle function from http://stackoverflow.com/a/2450976
-function shuffle(array) {
-    var currentIndex = array.length, temporaryValue, randomIndex;
+        this.deck.addEventListener('click', function(event) {
+            event.preventDefault();
+            let target = event.target;
+            if(target.nodeName == 'LI') {
+                let card = ViewModel.getCard(target.getAttribute('id'));
+                View.renderCardUpdate(card);
+            }
+        });
 
-    while (currentIndex !== 0) {
-        randomIndex = Math.floor(Math.random() * currentIndex);
-        currentIndex -= 1;
-        temporaryValue = array[currentIndex];
-        array[currentIndex] = array[randomIndex];
-        array[randomIndex] = temporaryValue;
+        this.restartBtn.addEventListener('click', function(event){
+            event.preventDefault();
+            ViewModel.init();
+        });
+    },
+    renderInit: function() {
+        while(this.deck.firstChild){
+            this.deck.removeChild(this.deck.firstChild);
+        }
+        let model = ViewModel.getModel();
+        for(let modelItem of model) {
+            let liTemplate =   `<li class="card" id="${modelItem.id}">
+                                    <i class="fa ${modelItem.icon}"></i>
+                                </li>`;
+            this.deck.innerHTML += liTemplate;
+        }
+    },
+    renderCardUpdate: function(card) {
+        let cardEl = this.cards.find(function(el){
+            return el.getAttribute('id') == card.id;
+        });
+
+        if(!card.clicked) {
+            cardEl.classList.add('open', 'show');
+            card.clicked = true;
+        }
+        let openCard = ViewModel.checkCardMatch(card);
+        if(openCard == undefined) {
+            ViewModel.openCards.push(card);
+        } else {
+            let openCardEl = this.cards.find(function(el){
+                return el.getAttribute('id') == openCard.id;
+            });
+            openCardEl.classList.add('match');
+            cardEl.classList.add('match');
+        }
+    },
+};
+
     }
     return array;
 }
