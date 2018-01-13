@@ -1,32 +1,6 @@
-// data for font-awesome
-const gameIconList = ['diamond', 'anchor', 'bolt', 'paper-plane-o', 'cube', 'leaf', 'bicycle', 'bomb'];
 
-var clicks = 0;
+var Model, View, ViewModel;
 
-// initialize function to do prep wors
-function init() {
-    // shuffle the icons array, note array has 8 unique icons and each is repeated
-    let icons = shuffle([...gameIconList,...gameIconList]);
-    const ulElem = document.querySelector('ul.deck');
-    // TODO: clear the deck in the html
-    while (ulElem.firstChild) {
-        ulElem.removeChild(ulElem.firstChild);
-    }
-
-    // loop through all icons and add them to the deck
-    for(let icon of icons) {
-        let liTemplate =    `<li class="card">
-                                <i class="fa fa-${icon}"></i>
-                            </li>`;
-        ulElem.innerHTML += liTemplate;
-    }
-
-    // add an event listener for the deck
-    ulElem.addEventListener('click', function(evt){
-        evt.preventDefault();
-        const target =  evt.target;
-        if(target.nodeName == 'LI') {
-            target.classList.add('open', 'show');
 Model = {
     getData: function() {
         // data for font-awesome
