@@ -73,7 +73,7 @@ View = {
         });
 
         if(!card.clicked) {
-            cardEl.classList.add('open', 'show');
+            cardEl.classList.add('flipped');
             card.clicked = true;
         }
         let openCard = ViewModel.checkCardMatch(card);
