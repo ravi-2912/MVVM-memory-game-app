@@ -61,9 +61,10 @@ View = {
         }
         let model = ViewModel.getModel();
         for(let modelItem of model) {
-            let liTemplate =   `<li class="card" id="${modelItem.id}">
-                                    <i class="fa ${modelItem.icon}"></i>
-                                </li>`;
+            let liTemplate =   `<div class="card" id="${modelItem.id}">
+                                    <div class="front"></div>
+                                    <div class="fa ${modelItem.icon} back"></div>
+                                </div>`;
             this.deck.innerHTML += liTemplate;
         }
     },
