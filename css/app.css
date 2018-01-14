@@ -77,8 +77,11 @@ h1 {
     backface-visibility: hidden;
 }
 
+.back {
     background: #02b3e4;
     cursor: default;
+    font-size: 33px;
+    transform: rotateY( 180deg );
 }
 
 .deck .card.show {
