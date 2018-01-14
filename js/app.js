@@ -36,9 +36,9 @@ Model = {
 View = {
     init: function() {
         this.totalClicks = 0;
-        this.deck = document.querySelector('ul.deck');
+        this.deck = document.querySelector('.deck');
         this.renderInit();
-        this.cards = Array.prototype.slice.call(document.querySelectorAll('li.card'))
+        this.cards = Array.prototype.slice.call(document.querySelectorAll('.card'));
         this.restartBtn = document.querySelector('div.restart');
 
         this.deck.addEventListener('click', function(event) {
