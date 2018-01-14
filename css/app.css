@@ -84,8 +84,8 @@ h1 {
     transform: rotateY( 180deg );
 }
 
-.deck .card.show {
-    font-size: 33px;
+.deck .card.flipped {
+    transform: rotateY( 180deg );
 }
 
 .deck .card.match {
