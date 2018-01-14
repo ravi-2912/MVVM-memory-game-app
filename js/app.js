@@ -43,9 +43,8 @@ View = {
 
         this.deck.addEventListener('click', function(event) {
             event.preventDefault();
-            let target = event.target;
-            if(target.nodeName == 'LI') {
-                let card = ViewModel.getCard(target.getAttribute('id'));
+            if(target.nodeName === 'DIV' && target.classList.contains('front')) {
+                let card = ViewModel.getCard(target.parentElement.getAttribute('id'));
                 View.renderCardUpdate(card);
             }
         });
