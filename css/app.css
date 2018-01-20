@@ -139,3 +139,52 @@ h1 {
     float: right;
     cursor: pointer;
 }
+
+button {
+    border: transparent;
+    background: #2e3d49;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to top left, #2e3d49, #3a6073);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to top left, #2e3d49, #3a6073); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    color: #fff;
+    border-radius: 40px;
+    padding: 15px 30px;
+    width: 200px;
+    white-space: nowrap;
+    font-size: 18px;
+    margin: auto;
+    transition: all 0.5s;
+}
+
+button:hover {
+    width: 313px;
+    box-shadow: 12px 15px 20px 0 rgba(46, 61, 73, 0.5);
+}
+
+#start-game {
+    display: inline-block;
+    transition: transform 0.5s 0.3s, opacity 0.3s 0.3s, all 0.3s 0.3s;
+    text-indent: 25px;
+    visibility: visible;
+}
+
+button:hover #start-game {
+    -webkit-transform: translateX(-70px);
+            transform: translateX(-70px);
+    opacity: 0;
+    text-indent: 0;
+    visibility: hidden;
+}
+
+#mover {
+    display: inline-block;
+    visibility: hidden;
+    transition: transform 0.5s 0.3s, opacity 0.3s 0.3s, all 0.3s 0.3s;
+    opacity: 0;
+}
+
+button:hover #mover {
+    -webkit-transform: translateX(-95px);
+            transform: translateX(-95px);
+    opacity: 1;
+    visibility: visible;
+}
