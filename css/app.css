@@ -109,6 +109,10 @@ h1 {
     background: #ca231e;
 }
 
+.time {
+    font-size: 24px;
+    letter-spacing: 0.5em;
+}
 /*
  * Styles for the Score Panel
  */
