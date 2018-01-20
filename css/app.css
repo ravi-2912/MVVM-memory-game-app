@@ -60,6 +60,7 @@ h1 {
     transform-style: preserve-3d;
     transition: transform 0.7s;
     position: relative;
+    z-index: 9;
 }
 
 .front, .back {
@@ -110,8 +111,12 @@ h1 {
 }
 
 .time {
-    font-size: 24px;
     letter-spacing: 0.5em;
+    margin-left: 50px;;
+}
+
+.hidden {
+    display: none;
 }
 /*
  * Styles for the Score Panel
@@ -138,6 +143,28 @@ h1 {
 .score-panel .restart {
     float: right;
     cursor: pointer;
+}
+
+.status-icon {
+    font-size: 50px;
+}
+
+.ico-won {
+    color: #1aca40;
+}
+
+.ico-lost {
+    color: #ca231e;
+}
+
+.result {
+    border-radius: 8px;
+    padding: 50px;
+    background: white;
+    box-shadow: 12px 15px 20px 0 rgba(46, 61, 73, 0.5);
+    z-index: 10;
+    position: absolute;
+    text-align: center;
 }
 
 button {
