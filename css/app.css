@@ -99,10 +99,14 @@ h1 {
     transform: rotateY( 180deg );
 }
 
-.deck .card.match {
+.match {
     cursor: default;
     background: #02ccba;
-    font-size: 33px;
+}
+
+.not-match {
+    cursor: default;
+    background: #ca231e;
 }
 
 /*
