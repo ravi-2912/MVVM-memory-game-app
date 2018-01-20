@@ -87,6 +87,14 @@ h1 {
     transform: rotateY( 180deg );
 }
 
+.front-hidden {
+    display: none;
+}
+
+.back-visible {
+    transform: rotateY( 180deg );
+}
+
 .deck .card.flipped {
     transform: rotateY( 180deg );
 }
