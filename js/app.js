@@ -42,6 +42,13 @@ View = {
         this.openCardEl = this.openCardElBack = this. openCardElFront = undefined;
 
         this.deck = document.querySelector('.deck');
+        this.movesSpan = document.querySelector('.moves');
+        this.restartBtn = document.querySelector('.restart');
+        this.timeText = document.querySelector('.time');
+        this.status = document.querySelector('.status');
+        this.subStatus = document.querySelector('.sub-status');
+        this.statusIco = document.querySelector('.status-icon');
+        this.result = document.querySelector('.result');
         this.renderInit();
         this.cards = Array.prototype.slice.call(document.querySelectorAll('.card'));
         this.restartBtn = document.querySelector('div.restart');
