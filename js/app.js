@@ -161,16 +161,29 @@ View = {
         let to = performance.now();
         //console.log(to-ti);
     },
+    renderResults: function(won) {
+        let cards = document.querySelectorAll('.card');
+        for(let card of cards) {
+            card.classList.add('animated', 'zoomOut');
         }
-        let openCard = ViewModel.checkCardMatch(card);
-        if(openCard == undefined) {
-            ViewModel.openCards.push(card);
+        setTimeout(() => {
+            while(this.deck.firstChild){
+                this.deck.removeChild(this.deck.firstChild);
+            }
+        },500);
+        this.result.classList.remove('hidden');
+        if(won) {
+            this.status.textContent = 'Congratulations! You won, yay!!';
+            this.subStatus.textContent = `You won in ${this.totalClicks} moves and have won ${this.stars} stars.`;
+            this.statusIco.classList.add('fa', 'fa-check-circle', 'fa-4x', 'ico-won');
         } else {
-            let openCardEl = this.cards.find(function(el){
-                return el.getAttribute('id') == openCard.id;
-            });
-            openCardEl.classList.add('match');
-            cardEl.classList.add('match');
+            this.status.textContent = 'Sorry! You lost, try again!!';
+            this.subStatus.textContent = `You used all the time, please try again to win.`;
+            this.statusIco.classList.add('fa', 'fa-times-circle', 'fa-4x', 'ico-lost');
+        }
+        this.result.classList.add('animated', 'zoomIn');
+        this.result.querySelector('button').classList.remove('hidden');
+    },
     renderAllCardsOpen: function(open) {
         let cards = document.querySelectorAll('.card');
         console.log(cards);
