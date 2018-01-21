@@ -85,14 +85,81 @@ View = {
             this.deck.innerHTML += liTemplate;
         }
     },
-    renderCardUpdate: function(card) {
-        let cardEl = this.cards.find(function(el){
-            return el.getAttribute('id') == card.id;
-        });
+    renderCardUpdate: function() {
+        let ti = performance.now();
+        if(this.cardClicked) {
+            let card = this.cardClicked;
+            let cardEl = this.cards.find(function(el){
+                return el.getAttribute('id') == ViewModel.getCardID(card);
+            });
+            let cardElFront = cardEl.querySelector('.front'),
+                cardElBack = cardEl.querySelector('.back');
 
-        if(!card.clicked) {
-            cardEl.classList.add('flipped');
-            card.clicked = true;
+            if(!ViewModel.openCard) {
+                ViewModel.openCard = card;
+                cardEl.classList.add('flipped');
+                card.clicked = true;
+                this.openCardEl = cardEl;
+                this.openCardElFront = cardEl.querySelector('.front');
+                this.openCardElBack = cardEl.querySelector('.back');
+            }
+
+            if(!card.clicked ) {
+                cardEl.classList.add('flipped');
+                this.totalClicks++;
+                card.clicked = true;
+                if ( ViewModel.checkCardMatch(card)) {
+                    setTimeout(() => {
+                        this.openCardEl.classList.add('animated', 'rubberBand');
+                        cardEl.classList.add('animated', 'rubberBand');
+                        this.openCardElFront.classList.add('front-hidden');
+                        cardElFront.classList.add('front-hidden');
+                        this.openCardElBack.classList.add('match', 'animated', 'rubberBand');
+                        cardElBack.classList.add('match', 'animated', 'rubberBand');
+                    }, 700);
+                    setTimeout(() => {
+                        this.openCardEl.classList.remove('animated', 'rubberBand');
+                        cardEl.classList.remove('animated', 'rubberBand');
+                        this.openCardElBack.classList.remove('animated', 'rubberBand');
+                        cardElBack.classList.remove('animated', 'rubberBand');
+                    },1200);
+                    ViewModel.matchedCards++;
+                    ViewModel.openCard = undefined;
+                } else {
+                    setTimeout(() => {
+                        this.openCardEl.classList.add('animated', 'shake');
+                        cardEl.classList.add('animated', 'shake');
+                        this.openCardElFront.classList.add('front-hidden');
+                        cardElFront.classList.add('front-hidden');
+                        this.openCardElBack.classList.add('not-match', 'animated', 'shake');
+                        cardElBack.classList.add('not-match', 'animated', 'shake');
+                    }, 700);
+                    setTimeout(() => {
+                        this.openCardEl.classList.remove('animated', 'shake');
+                        cardEl.classList.remove('animated', 'shake');
+                        this.openCardElFront.classList.remove('front-hidden');
+                        cardElFront.classList.remove('front-hidden');
+                        this.openCardElBack.classList.remove('not-match', 'animated', 'shake');
+                        cardElBack.classList.remove('not-match', 'animated', 'shake');
+                        card.clicked = false;
+                    },1200);
+                    setTimeout(() => {
+                        cardEl.classList.remove('flipped');
+                    }, 1300);
+                }
+                switch(this.totalClicks) {
+                    case 12:
+                    case 20:
+                    case 26:
+                        this.stars--;
+                        break;
+                }
+                this.movesSpan.textContent = this.totalClicks;
+            }
+        }
+        let to = performance.now();
+        //console.log(to-ti);
+    },
         }
         let openCard = ViewModel.checkCardMatch(card);
         if(openCard == undefined) {
