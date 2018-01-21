@@ -109,9 +109,40 @@ View = {
 
 ViewModel = {
     init: function() {
-        this.openCards = [];
+        this.openCard = undefined;
+        this.matchedCards = 0;
         Model.init();
+        this.totalCards = Model.model.length;
         View.init();
+        this.timeNow = Date.now();
+
+        let interval = setInterval(()=>{
+            let dt = 121 - (Date.now() - this.timeNow)/1000;
+            let minutes = Math.floor(dt / 60);
+            let seconds = Math.floor(dt - minutes * 60);
+            seconds = seconds<10 ? '0' + seconds.toString() : seconds;
+            minutes = '0' + minutes.toString();
+            let displayTime = `${minutes}:${seconds}`;
+            View.timeText.textContent = displayTime;
+            
+            if(dt.toFixed(1) == 120)
+            {
+                View.renderAllCardsOpen(true);
+            }
+            if(dt.toFixed(1) == 116 )
+            {
+                View.renderAllCardsOpen(false);
+            }
+            if(this.matchedCards == this.totalCards/2) {
+                clearInterval(interval);
+                View.renderResults(true);
+            }
+            if (dt.toFixed(1) == 0.0) {
+                clearInterval(interval);
+                View.renderResults(false);
+                
+            }
+        },500);
     },
     getModel: function() {
         return Model.model;
