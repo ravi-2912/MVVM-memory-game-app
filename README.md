@@ -1,20 +1,39 @@
 # Memory Game Project
 
-## Table of Contents
+Memory game project where you have to match the cards from memory after all cards are show to you once for 5 sec. You have 2 minutes to complete the game.
+This game features vanilla javascript programming with separation of concerns using Model-View-Whatever (MVW or MV*) approach.
+Key game features are:
+1. CSS Animation
+2. Dynamic UI creation
+3. Vanilla JavaScript ES6
+4. Separtion of concerns using MVW
 
-* [Instructions](#instructions)
-* [Contributing](#contributing)
+### Dependencies
+The following are needed to run the project:
+* [Font Awesome](http://fontawesome.io/)
+* [Animate CSS](https://daneden.github.io/animate.css/)
 
-## Instructions
+### Installation
+Just download and run `index.html`. Make sure the following files are present
+```bash
+$> tree
+.
+├─ css/
+│    ├─ app.css
+│    └─ app.css
+├─ js/
+│    └─ app.js
+├─ img/
+│    └─ geometry2.png
+├─ index.html
+└─ ReadMe.md
+```
 
-The starter project has some HTML and CSS styling to display a static version of the Memory Game project. You'll need to convert this project from a static project to an interactive one. This will require modifying the HTML and CSS files, but primarily the JavaScript file.
+### Contributing
 
-To get started, open `js/app.js` and start building out the app's functionality
+This repository is the developed from the starter code provided in [Udacity Front-End NanoDegree](www.udacity.com) program. Therefore, all are invited to provide suggestestions.
 
-For specific, detailed instructions, look at the project instructions in the [Udacity Classroom](https://classroom.udacity.com/me).
-
-## Contributing
-
-This repository is the starter code for _all_ Udacity students. Therefore, we most likely will not accept pull requests.
-
-For details, check out [CONTRIBUTING.md](CONTRIBUTING.md).
+#### TODO
+* Refactor for performane
+* Refactor code for better separation of concerns and if possible intorduce data bindings
+* Add more features - grid size, responsive, etc.
