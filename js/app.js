@@ -171,6 +171,18 @@ View = {
             });
             openCardEl.classList.add('match');
             cardEl.classList.add('match');
+    renderAllCardsOpen: function(open) {
+        let cards = document.querySelectorAll('.card');
+        console.log(cards);
+        if(open) {
+            for(let card of cards) {
+                card.classList.add('flipped');
+                console.log();
+            }
+        } else {
+            for(let card of cards) {
+                card.classList.remove('flipped');
+            }
         }
     },
 };
