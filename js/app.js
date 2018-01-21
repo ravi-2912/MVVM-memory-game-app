@@ -51,9 +51,12 @@ View = {
         this.subStatus = document.querySelector('.sub-status');
         this.statusIco = document.querySelector('.status-icon');
         this.result = document.querySelector('.result');
+
+        this.result.classList.add('hidden');
+        this.result.querySelector('button').classList.add('hidden');
+
         this.renderInit();
         this.cards = Array.prototype.slice.call(document.querySelectorAll('.card'));
-        this.restartBtn = document.querySelector('div.restart');
 
         this.deck.addEventListener('click', function(event) {
             event.preventDefault();
