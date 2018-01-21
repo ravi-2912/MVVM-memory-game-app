@@ -35,7 +35,12 @@ Model = {
 
 View = {
     init: function() {
+        this.cardCliced = undefined;
         this.totalClicks = 0;
+        this.stars = 3;
+        this.clickDisable = true;
+        this.openCardEl = this.openCardElBack = this. openCardElFront = undefined;
+
         this.deck = document.querySelector('.deck');
         this.renderInit();
         this.cards = Array.prototype.slice.call(document.querySelectorAll('.card'));
