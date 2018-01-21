@@ -183,6 +183,9 @@ View = {
                     case 20:
                     case 26:
                         this.stars--;
+                        let iEl = this.starsDisplayItem[this.stars].firstChild;
+                        iEl.classList.remove('fa-star');
+                        iEl.classList.add('fa-star-o');
                         break;
                 }
                 // update the clics move text
