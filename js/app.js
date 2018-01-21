@@ -58,6 +58,8 @@ View = {
         this.subStatus = document.querySelector('.sub-status');
         this.statusIco = document.querySelector('.status-icon');
         this.result = document.querySelector('.result');
+        this.starsDisplay = document.querySelector('.stars');
+        this.starsDisplayItem = Array.prototype.slice.call(this.starsDisplay.getElementsByTagName('li'));
 
         // hide the result div
         this.result.classList.add('hidden');
