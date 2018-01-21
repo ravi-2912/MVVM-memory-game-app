@@ -151,4 +151,13 @@ ViewModel = {
  */
 document.addEventListener("DOMContentLoaded", function(){
     ViewModel.init();
-});
+});        return (this.openCard.icon === card.icon) && (this.openCard.id != card.id);
+    },
+    restart: function() {
+        this.openCards = undefined;
+        this.matchedCards = 0;
+        Model.init();
+        View.renderInit();
+    },
+    
+};
