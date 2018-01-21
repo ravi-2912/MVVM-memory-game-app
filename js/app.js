@@ -11,11 +11,13 @@ Model = {
         this.data = this.getData();
         this.model = [];
         this.dataArray = this.shuffle([...this.data, ...this.data]);
+        this.matchCount = this.dataArray/2;
         for(let i = 0 ; i < this.dataArray.length; i++) {
             this.model.push({
                 icon: 'fa-' + this.dataArray[i],
                 id: i,
-                clicked: false
+                clicked: false,
+                matchId: 0
             });
         }
     },
