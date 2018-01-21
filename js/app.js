@@ -76,14 +76,15 @@ View = {
         while(this.deck.firstChild){
             this.deck.removeChild(this.deck.firstChild);
         }
-        let model = ViewModel.getModel();
+        let model = ViewModel.getModel(), inHtml = '';
         for(let modelItem of model) {
-            let liTemplate =   `<div class="card" id="${modelItem.id}">
-                                    <div class="front"></div>
-                                    <div class="fa ${modelItem.icon} back"></div>
-                                </div>`;
-            this.deck.innerHTML += liTemplate;
+            inHtml +=  `<div class="card" id="${modelItem.id}">
+                            <div class="front"></div>
+                            <div class="fa ${modelItem.icon} back"></div>
+                        </div>`;
         }
+        this.deck.innerHTML = inHtml;
+        this.movesSpan.textContent = this.totalClicks;
     },
     renderCardUpdate: function() {
         let ti = performance.now();
