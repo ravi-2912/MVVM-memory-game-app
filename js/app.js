@@ -275,6 +275,7 @@ ViewModel = {
             // if all cards matched then proceed to showing the results
             if(this.matchedCards == this.totalCards/2) {
                 clearInterval(interval);
+                View.timeToFinish = displayTime;
                 View.renderResults(true);
             }
             // if time is up proceed to showing results
