@@ -212,7 +212,8 @@ View = {
         // update the text content of the results
         if(won) {
             this.status.textContent = 'Congratulations! You won, yay!!';
-            this.subStatus.textContent = `You won in ${this.totalClicks} moves and have won ${this.stars} stars.`;
+            this.subStatus.textContent = `You won in ${this.totalClicks} moves and have won ${this.stars} stars.
+                                          <br> You completed the game in ${this.timeToFinish}.`;
             this.statusIco.classList.add('fa', 'fa-check-circle', 'fa-4x', 'ico-won');
         } else {
             this.status.textContent = 'Sorry! You lost, try again!!';
