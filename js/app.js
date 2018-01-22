@@ -179,8 +179,7 @@ View = {
                 }
                 // update stars based on total mouse clicks
                 switch(this.totalClicks) {
-                    case 12:
-                    case 20:
+                    case 16:
                     case 26:
                         this.stars--;
                         let iEl = this.starsDisplayItem[this.stars].firstChild;
