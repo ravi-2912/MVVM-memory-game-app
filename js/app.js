@@ -46,6 +46,7 @@ View = {
         this.cardCliced = undefined;
         this.totalClicks = 0;
         this.stars = 3;
+        this.timeToFinish = '';
         this.clickDisable = true;
         this.openCardEl = this.openCardElBack = this. openCardElFront = undefined;
 
